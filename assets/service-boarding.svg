@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#03050a"/>
+      <stop offset="0.45" stop-color="#0a1120"/>
+      <stop offset="0.66" stop-color="#1f2029"/>
+      <stop offset="0.7" stop-color="#4a3a2a"/>
+      <stop offset="0.71" stop-color="#15130f"/>
+      <stop offset="1" stop-color="#050404"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16130f"/>
+      <stop offset="1" stop-color="#040303"/>
+    </linearGradient>
+    <linearGradient id="fus" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a5a5f"/>
+      <stop offset="0.12" stop-color="#1c1c1f"/>
+      <stop offset="0.5" stop-color="#070708"/>
+      <stop offset="0.85" stop-color="#0d0d0e"/>
+      <stop offset="1" stop-color="#1f1a14"/>
+    </linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5f5a50"/>
+      <stop offset="0.35" stop-color="#efe6d4"/>
+      <stop offset="0.7" stop-color="#8d8475"/>
+      <stop offset="1" stop-color="#3f392f"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9b968c"/>
+      <stop offset="1" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <radialGradient id="doorLight" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd694" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#ffd694" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pool" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f3c983" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#f3c983" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="b8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="b20" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter>
+    <g id="jetSide">
+      <!-- 主翼（奥側） -->
+      <path d="M470 600 L330 604 L312 610 L470 614 Z" fill="#1a1a1b"/>
+      <!-- 垂直尾翼 -->
+      <path d="M600 540 L668 372 L716 372 L704 400 L690 540 Z" fill="url(#fus)"/>
+      <path d="M668 372 L716 372" stroke="#d6bf8f" stroke-width="2"/>
+      <!-- T字尾翼 -->
+      <path d="M626 370 L752 364 C760 364 762 372 754 374 L626 380 Z" fill="url(#wing)"/>
+      <!-- 胴体 -->
+      <path d="M92 588 C100 560 140 532 196 526 L640 522 C680 522 712 532 724 546 C712 566 680 590 640 596 L200 602 C150 604 106 600 92 588 Z" fill="url(#fus)"/>
+      <!-- エンジン -->
+      <path d="M548 510 L650 506 C664 506 670 514 670 522 C670 530 664 538 650 538 L548 540 C538 540 532 532 532 525 C532 517 538 510 548 510 Z" fill="url(#fus)"/>
+      <path d="M548 510 C538 510 532 517 532 525 C532 532 538 540 548 540" fill="none" stroke="url(#chrome)" stroke-width="5"/>
+      <path d="M600 540 L606 552 L630 552 L632 538" fill="#0b0b0c"/>
+      <!-- コックピット -->
+      <path d="M150 548 C160 538 176 532 196 530 L200 546 C184 548 170 552 160 558 Z" fill="#1c2230" stroke="#cfc6b6" stroke-width="1.2"/>
+      <path d="M176 534 L180 550" stroke="#cfc6b6" stroke-width="1.2"/>
+      <!-- チートライン -->
+      <path d="M110 578 C200 572 420 568 700 560" fill="none" stroke="url(#chrome)" stroke-width="2.4"/>
+      <path d="M112 583 C200 577 420 573 700 565" fill="none" stroke="#c9a96b" stroke-width="1" opacity=".8"/>
+      <!-- 客室の窓（室内の灯り） -->
+      <g fill="#f5cf8a">
+        <rect x="262" y="542" width="11" height="15" rx="5.5"/><rect x="298" y="542" width="11" height="15" rx="5.5"/><rect x="334" y="541" width="11" height="15" rx="5.5"/><rect x="370" y="541" width="11" height="15" rx="5.5"/><rect x="406" y="540" width="11" height="15" rx="5.5"/><rect x="442" y="540" width="11" height="15" rx="5.5"/><rect x="478" y="539" width="11" height="15" rx="5.5"/><rect x="514" y="539" width="11" height="15" rx="5.5"/>
+      </g>
+      <!-- 主翼（手前側） -->
+      <path d="M360 596 L520 598 L560 606 L380 612 Z" fill="url(#wing)"/>
+      <path d="M300 614 L520 606 L500 616 L300 626 Z" fill="#141414"/>
+      <!-- 脚 -->
+      <path d="M170 600 L172 646" stroke="#3a3a3a" stroke-width="5"/>
+      <circle cx="172" cy="652" r="12" fill="#0a0a0a" stroke="#3b3b3b" stroke-width="3"/>
+      <path d="M440 612 L444 646" stroke="#3a3a3a" stroke-width="6"/>
+      <circle cx="432" cy="652" r="13" fill="#0a0a0a" stroke="#3b3b3b" stroke-width="3"/>
+      <circle cx="458" cy="652" r="13" fill="#0a0a0a" stroke="#3b3b3b" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#sky)"/>
+  <!-- 星 -->
+  <g fill="#efe4cc">
+    <circle cx="80" cy="120" r="1.2" opacity=".7"/><circle cx="210" cy="80" r="1" opacity=".5"/><circle cx="340" cy="160" r="1.3" opacity=".8"/><circle cx="480" cy="70" r="1" opacity=".6"/><circle cx="620" cy="140" r="1.2" opacity=".7"/><circle cx="720" cy="60" r="1" opacity=".5"/><circle cx="560" cy="230" r=".9" opacity=".5"/><circle cx="130" cy="260" r="1" opacity=".6"/><circle cx="410" cy="250" r=".9" opacity=".4"/>
+  </g>
+  <circle cx="640" cy="200" r="14" fill="#f7ecd4"/>
+  <circle cx="640" cy="200" r="90" fill="#f7ecd4" opacity=".08" filter="url(#b20)"/>
+
+  <!-- 地面 -->
+  <rect x="0" y="708" width="800" height="292" fill="url(#ground)"/>
+  <!-- 遠くの誘導灯 -->
+  <g fill="#f3c983">
+    <circle cx="20" cy="712" r="2"/><circle cx="90" cy="712" r="2"/><circle cx="160" cy="713" r="2"/><circle cx="230" cy="713" r="2"/><circle cx="300" cy="713" r="2"/><circle cx="370" cy="714" r="2"/><circle cx="440" cy="714" r="2"/><circle cx="510" cy="714" r="2"/><circle cx="580" cy="715" r="2"/><circle cx="650" cy="715" r="2"/><circle cx="720" cy="715" r="2"/><circle cx="790" cy="716" r="2"/>
+  </g>
+  <g fill="#6fa3ff" opacity=".9">
+    <circle cx="60" cy="730" r="2.2"/><circle cx="200" cy="734" r="2.2"/><circle cx="340" cy="738" r="2.2"/><circle cx="600" cy="740" r="2.2"/><circle cx="740" cy="736" r="2.2"/>
+  </g>
+  <rect x="0" y="706" width="800" height="14" fill="#f3c983" opacity=".06" filter="url(#b8)"/>
+
+  <!-- 機体（少し大きく配置） -->
+  <g transform="translate(-30 90) scale(1.1)">
+    <!-- 水面のような映り込み -->
+    <g transform="translate(0 1330) scale(1 -1)" opacity=".28" filter="url(#b3)">
+      <use href="#jetSide"/>
+    </g>
+    <ellipse cx="400" cy="668" rx="330" ry="14" fill="#000" opacity=".6" filter="url(#b8)"/>
+    <use href="#jetSide"/>
+    <!-- 開いた扉とタラップ -->
+    <ellipse cx="226" cy="566" rx="80" ry="70" fill="url(#doorLight)"/>
+    <rect x="214" y="532" width="26" height="54" rx="6" fill="#ffdf9e"/>
+    <path d="M214 586 L196 668 L176 668 L204 586 Z" fill="#1a1612"/>
+    <g stroke="#f7d494" stroke-width="2" opacity=".85">
+      <path d="M206 598 L222 598"/><path d="M203 612 L219 612"/><path d="M200 626 L216 626"/><path d="M197 640 L213 640"/><path d="M194 654 L210 654"/>
+    </g>
+    <path d="M214 586 L236 586 L214 668 L196 668" fill="none" stroke="#6b5a42" stroke-width="2"/>
+  </g>
+  <!-- 足元を照らす光と、敷かれたカーペット -->
+  <ellipse cx="200" cy="826" rx="170" ry="40" fill="url(#pool)"/>
+  <path d="M188 826 L230 826 L330 1000 L250 1000 Z" fill="#6a5433" opacity=".7"/>
+  <path d="M188 826 L230 826 L330 1000 L250 1000 Z" fill="none" stroke="#d6bf8f" stroke-opacity=".5"/>
+
+  <!-- 航法灯 -->
+  <circle cx="770" cy="494" r="3" fill="#fff"/>
+  <circle cx="770" cy="494" r="16" fill="#fff" opacity=".2" filter="url(#b8)"/>
+  <circle cx="366" cy="755" r="3" fill="#ff5a46"/>
+  <circle cx="366" cy="755" r="14" fill="#ff5a46" opacity=".25" filter="url(#b8)"/>
+</svg>

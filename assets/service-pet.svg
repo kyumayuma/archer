@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <radialGradient id="wall" cx="0.62" cy="0.36" r="0.85">
+      <stop offset="0" stop-color="#3b3027"/>
+      <stop offset="0.38" stop-color="#1c1712"/>
+      <stop offset="1" stop-color="#090807"/>
+    </radialGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#04060c"/>
+      <stop offset="0.42" stop-color="#0b1325"/>
+      <stop offset="0.62" stop-color="#262a36"/>
+      <stop offset="0.69" stop-color="#6d5538"/>
+      <stop offset="0.73" stop-color="#2a2b33"/>
+      <stop offset="1" stop-color="#0c0f18"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f6ead0" stop-opacity=".55"/>
+      <stop offset="0.25" stop-color="#e9d8b2" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#e9d8b2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lining" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#a39781"/>
+      <stop offset="0.45" stop-color="#6b604f"/>
+      <stop offset="1" stop-color="#2c261f"/>
+    </linearGradient>
+    <linearGradient id="liningIn" x1="0.9" y1="1" x2="0.1" y2="0">
+      <stop offset="0" stop-color="#7d725f"/>
+      <stop offset="0.5" stop-color="#3f372d"/>
+      <stop offset="1" stop-color="#241f19"/>
+    </linearGradient>
+    <linearGradient id="leather" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8d7d66"/>
+      <stop offset="0.35" stop-color="#5d5142"/>
+      <stop offset="1" stop-color="#241e18"/>
+    </linearGradient>
+    <linearGradient id="leatherSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a231c"/>
+      <stop offset="0.6" stop-color="#5a4d3e"/>
+      <stop offset="1" stop-color="#8a7a62"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#e8d6ae" stop-opacity="0"/>
+      <stop offset="0.55" stop-color="#e8d6ae" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#f4e6c4" stop-opacity=".95"/>
+    </linearGradient>
+    <clipPath id="win"><rect x="330" y="176" width="300" height="430" rx="138" ry="150"/></clipPath>
+    <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="blur14"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="blur30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#wall)"/>
+  <ellipse cx="480" cy="400" rx="330" ry="360" fill="#6d5a45" opacity=".16" filter="url(#blur30)"/>
+
+  <!-- 窓の内張り -->
+  <rect x="262" y="104" width="436" height="574" rx="200" ry="218" fill="#0b0908" opacity=".6" filter="url(#blur14)" transform="translate(0 16)"/>
+  <rect x="262" y="104" width="436" height="574" rx="200" ry="218" fill="url(#lining)"/>
+  <rect x="296" y="140" width="368" height="502" rx="170" ry="186" fill="url(#liningIn)"/>
+  <rect x="318" y="164" width="324" height="454" rx="150" ry="162" fill="#0e0c0a"/>
+
+  <!-- 窓の外 -->
+  <g clip-path="url(#win)">
+    <rect x="330" y="176" width="300" height="430" fill="url(#sky)"/>
+    <circle cx="548" cy="292" r="120" fill="url(#moonGlow)"/>
+    <circle cx="548" cy="292" r="15" fill="#f8eed8"/>
+    <g fill="#f3ead8">
+      <circle cx="392" cy="236" r="1.2" opacity=".8"/><circle cx="452" cy="210" r="1" opacity=".6"/><circle cx="600" cy="232" r="1.1" opacity=".7"/>
+      <circle cx="420" cy="320" r=".9" opacity=".5"/><circle cx="486" cy="262" r="1.3" opacity=".8"/><circle cx="366" cy="298" r="1" opacity=".5"/>
+    </g>
+    <g filter="url(#blur6)">
+      <ellipse cx="400" cy="508" rx="120" ry="22" fill="#7b7a80" opacity=".55"/>
+      <ellipse cx="560" cy="500" rx="110" ry="18" fill="#9b958a" opacity=".6"/>
+      <ellipse cx="470" cy="540" rx="170" ry="30" fill="#4c4d57" opacity=".7"/>
+      <ellipse cx="480" cy="585" rx="200" ry="40" fill="#23252e" opacity=".9"/>
+    </g>
+    <rect x="330" y="176" width="300" height="430" fill="none" stroke="#000" stroke-opacity=".6" stroke-width="40" rx="138" ry="150" filter="url(#blur14)"/>
+    <!-- 少し下がったブラインド -->
+    <rect x="320" y="166" width="320" height="58" fill="#a89a82"/>
+    <rect x="320" y="212" width="320" height="12" fill="#5a4f41"/>
+    <rect x="440" y="214" width="80" height="6" rx="3" fill="#2a241d"/>
+    <rect x="320" y="224" width="320" height="22" fill="#000" opacity=".35" filter="url(#blur6)"/>
+  </g>
+
+  <!-- 座席 -->
+  <rect x="92" y="380" width="170" height="520" rx="46" fill="url(#leatherSide)"/>
+  <rect x="104" y="392" width="146" height="40" rx="20" fill="#9a8a70" opacity=".35"/>
+  <path d="M120 470 H236 M120 560 H236 M120 650 H236" stroke="#1d1813" stroke-opacity=".45" stroke-width="2"/>
+  <rect x="150" y="740" width="560" height="150" rx="44" fill="url(#leather)"/>
+  <rect x="160" y="742" width="540" height="10" rx="5" fill="#c3b193" opacity=".35"/>
+  <path d="M290 760 V880 M430 760 V880 M570 760 V880" stroke="#1d1813" stroke-opacity=".35" stroke-width="2"/>
+  <rect x="640" y="690" width="118" height="70" rx="20" fill="#4a3f33"/>
+  <rect x="646" y="692" width="106" height="8" rx="4" fill="#b3a386" opacity=".4"/>
+  <rect x="150" y="880" width="560" height="120" fill="#120f0c"/>
+
+  <!-- 窓の外を眺める犬のシルエット -->
+  <g transform="translate(10 0)">
+    <ellipse cx="370" cy="760" rx="150" ry="16" fill="#000" opacity=".5" filter="url(#blur6)"/>
+    <path d="M262 762 C248 720 256 668 290 634 C314 610 342 588 366 560 C372 540 374 520 380 502 C378 486 380 470 384 456 C381 440 381 424 388 417 C395 410 406 411 410 420 C414 431 417 446 420 460 C429 457 441 457 453 463 C463 469 471 481 475 493 C483 495 491 500 493 508 C495 518 489 528 479 531 C471 535 463 537 457 541 C453 553 455 567 453 579 C451 620 453 700 457 762 Z" fill="#070605"/>
+    <path d="M388 417 C395 410 406 411 410 420 C414 431 417 446 420 460 C429 457 441 457 453 463 C463 469 471 481 475 493 C483 495 491 500 493 508 C495 518 489 528 479 531" fill="none" stroke="url(#rim)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M366 560 C372 540 374 520 380 502 C378 486 380 470 384 456" fill="none" stroke="#e8d6ae" stroke-opacity=".3" stroke-width="2"/>
+    <path d="M453 579 C451 620 453 700 457 762" fill="none" stroke="#e8d6ae" stroke-opacity=".22" stroke-width="2"/>
+    <path d="M368 452 C364 438 366 424 373 420 C380 416 387 420 389 430 L392 446" fill="#070605"/>
+    <!-- 首輪のチャーム -->
+    <path d="M384 540 C404 552 430 556 452 552" fill="none" stroke="#c9a96b" stroke-width="3"/>
+    <circle cx="444" cy="562" r="5" fill="#e0c690"/>
+  </g>
+
+  <rect width="800" height="1000" fill="url(#wall)" opacity=".12"/>
+</svg>
