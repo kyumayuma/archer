@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ARCHER｜夜を越える、プライベートジェット</title>
+<meta name="description" content="ARCHERは、夜間の長距離移動を得意とするプライベートジェットの運航会社です。専用機で、世界120以上の国と地域へ。">
+<meta name="theme-color" content="#0a0908">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0908'/%3E%3Cpath d='M32 12 L46 44 L32 36 L18 44 Z' fill='none' stroke='%23d6bf8f' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M32 36 V54' stroke='%23d6bf8f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Shippori+Mincho+B1:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body class="is-loading">
+
+<!-- ================= プリローダー ================= -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <p class="preloader__brand">ARCHER</p>
+    <p class="preloader__text" data-split-chars>夜を越える、プライベートジェット</p>
+  </div>
+</div>
+
+<!-- ================= 固定レイヤー（空・機内の窓） ================= -->
+<canvas class="sky" id="sky" aria-hidden="true"></canvas>
+<canvas class="cabin" id="cabin" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ================= ヘッダー ================= -->
+<header class="header" id="header">
+  <nav class="header__nav" aria-label="メインメニュー">
+    <a class="roll-link" href="#about" data-scroll-to><span class="roll" data-text="ARCHERについて">ARCHERについて</span></a>
+    <a class="roll-link" href="#flight" data-scroll-to><span class="roll" data-text="保有機">保有機</span></a>
+    <a class="roll-link" href="#service" data-scroll-to><span class="roll" data-text="サービス">サービス</span></a>
+    <a class="roll-link" href="#global" data-scroll-to><span class="roll" data-text="就航地">就航地</span></a>
+  </nav>
+  <a class="logo" id="logo" href="#top" data-scroll-to aria-label="ARCHER ページの先頭へ">ARCHER</a>
+  <div class="header__contact">
+    <a class="roll-link" href="tel:0300000000"><span class="roll" data-text="03-0000-0000">03-0000-0000</span></a>
+    <a class="roll-link" href="mailto:concierge@archer.example"><span class="roll" data-text="concierge@archer.example">concierge@archer.example</span></a>
+  </div>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="メニュー">
+    <a href="#about" data-scroll-to>ARCHERについて</a>
+    <a href="#flight" data-scroll-to>保有機</a>
+    <a href="#service" data-scroll-to>サービス</a>
+    <a href="#global" data-scroll-to>就航地</a>
+  </nav>
+  <div class="menu__contact">
+    <p>お問い合わせ（24時間受付）</p>
+    <a href="tel:0300000000">03-0000-0000</a>
+    <a href="mailto:concierge@archer.example">concierge@archer.example</a>
+  </div>
+</div>
+
+<!-- ================= 予約ボタン（常時表示） ================= -->
+<div class="cta" id="cta">
+  <div class="cta__inner">
+    <button class="cta__btn" type="button" data-open-booking data-magnetic>
+      <span class="cta__label" data-roll-chars>フライトを予約</span>
+    </button>
+    <button class="cta__icon" type="button" data-open-booking data-magnetic aria-label="フライトを予約">
+      <svg class="cta__plane cta__plane--a" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7 2.5 2.5 7L21 3Z"/><path d="m10 13 4.5-4.5"/></svg>
+      <svg class="cta__plane cta__plane--b" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7 2.5 2.5 7L21 3Z"/><path d="m10 13 4.5-4.5"/></svg>
+      <svg class="cta__close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ================= 1. ヒーロー：機内の窓 ================= -->
+  <section class="hero" id="top" aria-label="はじめに">
+    <div class="hero__stage">
+      <h1 class="hero__h1">
+        <span class="hero__title hero__title--l" data-hero="l"><span class="reveal-line">まっすぐに、</span></span>
+        <span class="hero__title hero__title--r" data-hero="r"><span class="reveal-line">夜を越える。</span></span>
+      </h1>
+      <div class="hero__bottom">
+        <div class="hero__desc" data-hero="l">
+          <p class="hero__lead reveal-line">自由な時間を、<br>空の上で</p>
+          <span class="rule reveal-line" aria-hidden="true"></span>
+          <p class="hero__text reveal-line">出発の時刻も、機内での過ごし方も、あなたの予定に合わせて。ARCHERは、移動の時間そのものを上質なひとときに変えるプライベートジェットです。</p>
+        </div>
+        <div class="hero__scroll" data-hero="r">
+          <div class="hero__scroll-in reveal-line">
+            <span class="scroll-ind" aria-hidden="true"><i></i></span>
+            <span>スクロール</span>
+            <span class="hero__scroll-to">旅をはじめる</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. ARCHERについて：夜空 ================= -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="about__inner">
+      <h2 class="visually-hidden" id="about-title">ARCHERについて</h2>
+      <p class="about__statement" data-highlight>ARCHERは、|夜間の|長距離移動を|得意とする|プライベートジェットの|運航会社です。|これまでに|4,800回を|超える|フライトで、|120以上の|国と地域へ|お客様を|お送りしてきました。|約束の時刻に、|静かに|たどり着く。|その当たり前を、|何より|大切にしています。</p>
+      <div class="about__cols">
+        <div class="about__brand" data-reveal>
+          <svg class="monogram" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path d="M32 13 L45 42 L32 34.5 L19 42 Z"/><path d="M32 34.5 V52"/></svg>
+          <p><span class="en">ARCHER</span><br>プライベートジェット運航</p>
+        </div>
+        <div class="about__grid">
+          <article class="feature" data-reveal>
+            <h3>専用機で、<br>まっすぐ目的地へ</h3>
+            <span class="rule" aria-hidden="true"></span>
+            <p>乗り継ぎや空港の混雑を気にする必要はありません。最初のご相談から着陸まで、専任のチームが一貫してお手伝いします。</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>あなたの時間を、<br>あなたのために</h3>
+            <span class="rule" aria-hidden="true"></span>
+            <p>機内は、仕事に集中する書斎にも、ぐっすり眠れる寝室にもなります。移動の時間を、いちばん使いたいかたちに。</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>細部まで、<br>確かな品質で</h3>
+            <span class="rule" aria-hidden="true"></span>
+            <p>航路の計画から機内のサービスまで、国際基準に沿ってひとつずつ整えています。確かな運航が、安心して過ごせる時間を支えます。</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>世界のどこへでも、<br>行き届いた対応で</h3>
+            <span class="rule" aria-hidden="true"></span>
+            <p>120以上の国と地域への運航に対応しています。現地での送迎や宿泊の手配まで、専門のスタッフがまとめて承ります。</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. 保有機：機体 → 座席配置 ================= -->
+  <section class="flight" id="flight" aria-labelledby="flight-title">
+    <div class="flight__stage">
+      <div class="flight__grid" aria-hidden="true"></div>
+
+      <div class="flight__titles" id="flightTitles">
+        <h2 class="flight__title" id="flight-title">
+          <span class="ft ft--l" data-split-chars>夜空の</span>
+          <span class="ft ft--r" data-split-chars>特等席</span>
+        </h2>
+        <p class="flight__sub" data-flight-reveal>あなたと移動する、<br>もうひとつの私邸</p>
+        <div class="flight__intro" data-flight-reveal>
+          <p class="flight__intro-head"><span>ARCHER ONE</span><span>全席フルフラット</span></p>
+          <p>空気の流れを乱さない主翼と、静粛性に優れた2基のエンジン。長い夜の飛行でも、客室は驚くほど静かに保たれます。</p>
+        </div>
+      </div>
+
+      <!-- 機体（外観） -->
+      <div class="jet" id="jet" aria-hidden="true">
+        <svg class="jet__shadow" viewBox="0 0 1000 1040">
+          <defs><filter id="fJetShadow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="16"/></filter></defs>
+          <g filter="url(#fJetShadow)" fill="#000">
+            <use href="#jWR"/><use href="#jWL"/><use href="#jSR"/><use href="#jSL"/><use href="#jER"/><use href="#jEL"/><use href="#jF"/>
+          </g>
+        </svg>
+        <div class="jet__clip" id="jetClip">
+          <div class="jet__clip-inner" id="jetClipInner">
+            <svg class="jet__body" viewBox="0 0 1000 1040">
+              <defs>
+                <!-- 機体の形（外観と図面で共通） -->
+                <path id="jF" d="M500 18 C517 18 536 52 545 100 C550 128 552 152 552 180 L552 735 C552 812 541 892 522 972 C516 996 509 1014 500 1022 C491 1014 484 996 478 972 C459 892 448 812 448 735 L448 180 C448 152 450 128 455 100 C464 52 483 18 500 18 Z"/>
+                <path id="jWR" d="M547 462 L950 716 C965 725 975 737 980 752 L989 779 C976 784 961 782 949 776 L688 694 L547 676 Z"/>
+                <path id="jWL" d="M453 462 L50 716 C35 725 25 737 20 752 L11 779 C24 784 39 782 51 776 L312 694 L453 676 Z"/>
+                <path id="jSR" d="M504 916 L646 988 C655 993 660 1002 658 1010 L652 1016 L504 984 Z"/>
+                <path id="jSL" d="M496 916 L354 988 C345 993 340 1002 342 1010 L348 1016 L496 984 Z"/>
+                <path id="jER" d="M561 724 C561 709 573 700 589 700 C605 700 617 709 617 724 L614 842 C613 859 603 869 589 873 C575 869 565 859 564 842 Z"/>
+                <path id="jEL" d="M439 724 C439 709 427 700 411 700 C395 700 383 709 383 724 L386 842 C387 859 397 869 411 873 C425 869 435 859 436 842 Z"/>
+                <path id="jFin" d="M495 846 L505 846 L507 1000 L500 1028 L493 1000 Z"/>
+
+                <linearGradient id="gFus" x1="448" y1="0" x2="552" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#0b0b0c"/>
+                  <stop offset=".08" stop-color="#232326"/>
+                  <stop offset=".2" stop-color="#57575c"/>
+                  <stop offset=".27" stop-color="#b7b4ae"/>
+                  <stop offset=".31" stop-color="#6a696c"/>
+                  <stop offset=".42" stop-color="#18181a"/>
+                  <stop offset=".62" stop-color="#080809"/>
+                  <stop offset=".86" stop-color="#101012"/>
+                  <stop offset=".95" stop-color="#4d412f"/>
+                  <stop offset="1" stop-color="#161310"/>
+                </linearGradient>
+                <linearGradient id="gFusV" x1="0" y1="18" x2="0" y2="1022" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#fff" stop-opacity=".22"/>
+                  <stop offset=".12" stop-color="#fff" stop-opacity="0"/>
+                  <stop offset=".7" stop-color="#000" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#000" stop-opacity=".55"/>
+                </linearGradient>
+                <radialGradient id="gNose" cx="488" cy="64" r="70" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#f3ead8" stop-opacity=".55"/>
+                  <stop offset="1" stop-color="#f3ead8" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="gWingR" x1="760" y1="582" x2="700" y2="712" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#a8a39a"/>
+                  <stop offset=".18" stop-color="#6f6c67"/>
+                  <stop offset=".55" stop-color="#3d3c3a"/>
+                  <stop offset="1" stop-color="#1e1e1e"/>
+                </linearGradient>
+                <linearGradient id="gWingL" x1="240" y1="582" x2="300" y2="712" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#b3aea4"/>
+                  <stop offset=".18" stop-color="#77736d"/>
+                  <stop offset=".55" stop-color="#42413e"/>
+                  <stop offset="1" stop-color="#202020"/>
+                </linearGradient>
+                <linearGradient id="gWingSheen" x1="500" y1="470" x2="1000" y2="780" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#000" stop-opacity=".55"/>
+                  <stop offset=".22" stop-color="#000" stop-opacity="0"/>
+                  <stop offset=".62" stop-color="#fff" stop-opacity=".07"/>
+                  <stop offset="1" stop-color="#000" stop-opacity=".25"/>
+                </linearGradient>
+                <linearGradient id="gWingSheenL" x1="500" y1="470" x2="0" y2="780" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#000" stop-opacity=".55"/>
+                  <stop offset=".22" stop-color="#000" stop-opacity="0"/>
+                  <stop offset=".62" stop-color="#fff" stop-opacity=".09"/>
+                  <stop offset="1" stop-color="#000" stop-opacity=".25"/>
+                </linearGradient>
+                <linearGradient id="gEdge" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#8a7755"/>
+                  <stop offset=".5" stop-color="#ead9b3"/>
+                  <stop offset="1" stop-color="#8a7755"/>
+                </linearGradient>
+                <linearGradient id="gEngR" x1="561" y1="0" x2="617" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#0c0c0d"/>
+                  <stop offset=".22" stop-color="#77767a"/>
+                  <stop offset=".3" stop-color="#26262a"/>
+                  <stop offset=".7" stop-color="#09090a"/>
+                  <stop offset="1" stop-color="#2d271d"/>
+                </linearGradient>
+                <linearGradient id="gEngL" x1="383" y1="0" x2="439" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#0c0c0d"/>
+                  <stop offset=".22" stop-color="#8a898c"/>
+                  <stop offset=".3" stop-color="#2a2a2e"/>
+                  <stop offset=".7" stop-color="#09090a"/>
+                  <stop offset="1" stop-color="#2d271d"/>
+                </linearGradient>
+                <linearGradient id="gChrome" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#5f5a50"/>
+                  <stop offset=".3" stop-color="#f4ecdc"/>
+                  <stop offset=".55" stop-color="#9d9384"/>
+                  <stop offset="1" stop-color="#40392e"/>
+                </linearGradient>
+                <linearGradient id="gGlass" x1="0" y1="86" x2="0" y2="134" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#3a4150"/>
+                  <stop offset=".45" stop-color="#0b0e14"/>
+                  <stop offset="1" stop-color="#161a22"/>
+                </linearGradient>
+                <linearGradient id="gStab" x1="0" y1="916" x2="0" y2="1016" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#9c978e"/>
+                  <stop offset=".35" stop-color="#55534f"/>
+                  <stop offset="1" stop-color="#1c1c1c"/>
+                </linearGradient>
+                <clipPath id="clipFus"><use href="#jF"/></clipPath>
+              </defs>
+
+              <!-- 主翼 -->
+              <use href="#jWL" fill="url(#gWingL)"/>
+              <use href="#jWR" fill="url(#gWingR)"/>
+              <use href="#jWL" fill="url(#gWingSheenL)"/>
+              <use href="#jWR" fill="url(#gWingSheen)"/>
+              <g fill="none" stroke-linecap="round">
+                <!-- 前縁（シャンパンゴールドの縁取り） -->
+                <path d="M547 463 L950 717 C965 726 975 738 980 752" stroke="url(#gEdge)" stroke-width="3.2" opacity=".85"/>
+                <path d="M453 463 L50 717 C35 726 25 738 20 752" stroke="url(#gEdge)" stroke-width="3.2" opacity=".9"/>
+                <!-- 動翼の分割線 -->
+                <path d="M552 660 L690 677 L948 758" stroke="#141414" stroke-width="1.4" opacity=".8"/>
+                <path d="M448 660 L310 677 L52 758" stroke="#141414" stroke-width="1.4" opacity=".8"/>
+                <path d="M700 682 L704 694 M820 718 L824 731 M600 667 L602 680" stroke="#141414" stroke-width="1.2" opacity=".7"/>
+                <path d="M300 682 L296 694 M180 718 L176 731 M400 667 L398 680" stroke="#141414" stroke-width="1.2" opacity=".7"/>
+                <path d="M600 520 L930 726" stroke="#fff" stroke-opacity=".06" stroke-width="10"/>
+                <path d="M400 520 L70 726" stroke="#fff" stroke-opacity=".08" stroke-width="10"/>
+              </g>
+
+              <!-- 胴体 -->
+              <use href="#jF" fill="url(#gFus)"/>
+              <use href="#jF" fill="url(#gFusV)"/>
+              <use href="#jF" fill="url(#gNose)"/>
+              <g clip-path="url(#clipFus)">
+                <!-- 背面の映り込み -->
+                <rect x="470" y="140" width="3" height="760" fill="#fff" opacity=".22"/>
+                <rect x="476" y="160" width="10" height="700" fill="#fff" opacity=".05"/>
+                <!-- パネルライン -->
+                <g stroke="#000" stroke-opacity=".55" stroke-width="1.2" fill="none">
+                  <path d="M449 176 C470 170 530 170 551 176"/>
+                  <path d="M449 470 C470 466 530 466 551 470"/>
+                  <path d="M449 700 C470 696 530 696 551 700"/>
+                </g>
+                <!-- 客室窓（胴体の縁に並ぶ） -->
+                <g fill="#141a24" stroke="#c9c2b4" stroke-width=".8" stroke-opacity=".38">
+                  <ellipse cx="452.6" cy="236" rx="2.3" ry="7"/><ellipse cx="452.6" cy="280" rx="2.3" ry="7"/><ellipse cx="452.6" cy="324" rx="2.3" ry="7"/><ellipse cx="452.6" cy="368" rx="2.3" ry="7"/><ellipse cx="452.6" cy="412" rx="2.3" ry="7"/><ellipse cx="452.6" cy="456" rx="2.3" ry="7"/><ellipse cx="452.6" cy="500" rx="2.3" ry="7"/><ellipse cx="452.6" cy="544" rx="2.3" ry="7"/><ellipse cx="452.6" cy="588" rx="2.3" ry="7"/><ellipse cx="452.6" cy="632" rx="2.3" ry="7"/>
+                  <ellipse cx="547.4" cy="236" rx="2.3" ry="7"/><ellipse cx="547.4" cy="280" rx="2.3" ry="7"/><ellipse cx="547.4" cy="324" rx="2.3" ry="7"/><ellipse cx="547.4" cy="368" rx="2.3" ry="7"/><ellipse cx="547.4" cy="412" rx="2.3" ry="7"/><ellipse cx="547.4" cy="456" rx="2.3" ry="7"/><ellipse cx="547.4" cy="500" rx="2.3" ry="7"/><ellipse cx="547.4" cy="544" rx="2.3" ry="7"/><ellipse cx="547.4" cy="588" rx="2.3" ry="7"/><ellipse cx="547.4" cy="632" rx="2.3" ry="7"/>
+                </g>
+              </g>
+              <!-- クロームのチートライン -->
+              <path d="M449.4 150 L449.4 740 C449.4 810 458 880 474 950" stroke="url(#gChrome)" stroke-width="1.3" fill="none" opacity=".8"/>
+              <path d="M550.6 150 L550.6 740 C550.6 810 542 880 526 950" stroke="#d6bf8f" stroke-width="1.1" fill="none" opacity=".55"/>
+              <!-- 胴体の輪郭光 -->
+              <use href="#jF" fill="none" stroke="#e7d6b0" stroke-opacity=".28" stroke-width="1.2"/>
+              <!-- コックピット -->
+              <path d="M461 130 C469 101 485 86 500 86 C515 86 531 101 539 130 L532 136 C522 117 512 109 500 109 C488 109 478 117 468 136 Z" fill="url(#gGlass)" stroke="#cfc6b6" stroke-width="1.3"/>
+              <path d="M500 86 L500 109 M482 93 L477 118 M518 93 L523 118" stroke="#cfc6b6" stroke-width="1.3"/>
+              <path d="M472 104 C480 95 490 90 498 89" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+              <!-- エンジン -->
+              <path d="M548 758 L562 758 L562 822 L548 822 Z" fill="#0c0c0d"/>
+              <path d="M452 758 L438 758 L438 822 L452 822 Z" fill="#0c0c0d"/>
+              <use href="#jER" fill="url(#gEngR)"/>
+              <use href="#jEL" fill="url(#gEngL)"/>
+              <path d="M563 716 C566 706 576 700 589 700 C602 700 612 706 615 716 L615 722 L563 722 Z" fill="url(#gChrome)"/>
+              <path d="M437 716 C434 706 424 700 411 700 C398 700 388 706 385 716 L385 722 L437 722 Z" fill="url(#gChrome)"/>
+              <path d="M570 852 L608 852 L601 884 L577 884 Z" fill="#0a0a0a" stroke="#3a342a"/>
+              <path d="M430 852 L392 852 L399 884 L423 884 Z" fill="#0a0a0a" stroke="#3a342a"/>
+              <path d="M575 740 L575 836" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+              <path d="M397 740 L397 836" stroke="#fff" stroke-opacity=".22" stroke-width="2"/>
+
+              <!-- 垂直尾翼・水平尾翼（T字尾翼） -->
+              <use href="#jFin" fill="#0e0e0f"/>
+              <path d="M500 850 L500 1024" stroke="#e7d6b0" stroke-opacity=".35" stroke-width="1"/>
+              <use href="#jSL" fill="url(#gStab)"/>
+              <use href="#jSR" fill="url(#gStab)"/>
+              <path d="M496 917 L354 989 C345 994 340 1002 342 1010" stroke="url(#gEdge)" stroke-width="2.2" fill="none" opacity=".85"/>
+              <path d="M504 917 L646 989 C655 994 660 1002 658 1010" stroke="url(#gEdge)" stroke-width="2.2" fill="none" opacity=".8"/>
+              <ellipse cx="500" cy="958" rx="8" ry="40" fill="#121213" stroke="#6b6458" stroke-width="1"/>
+            </svg>
+          </div>
+        </div>
+        <!-- 航法灯（別レイヤーで点滅） -->
+        <span class="navlight navlight--red" style="left:1.3%;top:74.6%"></span>
+        <span class="navlight navlight--green" style="left:98.7%;top:74.6%"></span>
+        <span class="navlight navlight--strobe" style="left:1.2%;top:75.2%"></span>
+        <span class="navlight navlight--strobe" style="left:98.8%;top:75.2%"></span>
+        <span class="navlight navlight--beacon" style="left:50%;top:36%"></span>
+        <span class="navlight navlight--tail" style="left:50%;top:98.6%"></span>
+      </div>
+
+      <!-- 座席配置図 -->
+      <div class="plan" id="plan" aria-hidden="true">
+        <div class="plan__clip" id="planClip">
+          <div class="plan__clip-inner" id="planClipInner">
+            <svg class="plan__svg" viewBox="0 0 1000 1040">
+              <defs>
+                <symbol id="seat" viewBox="0 0 26 30" overflow="visible">
+                  <rect x="2.5" y="1" width="21" height="7" rx="3"/>
+                  <rect x="2.5" y="7" width="21" height="21" rx="5"/>
+                  <path d="M1 10 V26 M25 10 V26"/>
+                </symbol>
+                <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <path d="M0 0 V8" stroke="#d6bf8f" stroke-opacity=".45" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <g class="plan__outline">
+                <use href="#jWL"/><use href="#jWR"/><use href="#jSL"/><use href="#jSR"/><use href="#jEL"/><use href="#jER"/><use href="#jF"/>
+                <path d="M563 720 H615 M437 720 H385"/>
+              </g>
+              <g class="plan__detail">
+                <!-- コックピット -->
+                <path d="M468 110 Q500 94 532 110"/>
+                <use href="#seat" x="474" y="116" width="20" height="23"/>
+                <use href="#seat" x="506" y="116" width="20" height="23"/>
+                <!-- 隔壁・入口・ギャレー -->
+                <path d="M452 162 H489 M511 162 H548"/>
+                <path class="dash" d="M448 174 L424 174 A36 36 0 0 0 448 210"/>
+                <rect x="519" y="170" width="25" height="54" rx="2"/>
+                <path d="M519 188 H544 M519 206 H544"/>
+                <path d="M452 232 H468 M532 232 H548"/>
+                <!-- ① クラブシート -->
+                <use href="#seat" x="458" y="244" width="26" height="30"/>
+                <use href="#seat" x="516" y="244" width="26" height="30"/>
+                <use href="#seat" x="458" y="306" width="26" height="30" transform="rotate(180 471 321)"/>
+                <use href="#seat" x="516" y="306" width="26" height="30" transform="rotate(180 529 321)"/>
+                <rect x="455" y="282" width="10" height="16" rx="2"/>
+                <rect x="535" y="282" width="10" height="16" rx="2"/>
+                <!-- ② ダイニング -->
+                <use href="#seat" x="458" y="352" width="26" height="30"/>
+                <use href="#seat" x="516" y="352" width="26" height="30"/>
+                <rect x="457" y="387" width="28" height="30" rx="3"/>
+                <rect x="515" y="387" width="28" height="30" rx="3"/>
+                <use href="#seat" x="458" y="422" width="26" height="30" transform="rotate(180 471 437)"/>
+                <use href="#seat" x="516" y="422" width="26" height="30" transform="rotate(180 529 437)"/>
+                <!-- ③ ラウンジ -->
+                <rect x="456" y="474" width="23" height="112" rx="5"/>
+                <path d="M461 476 V584 M461 511 H479 M461 548 H479"/>
+                <rect x="525" y="480" width="19" height="52" rx="2"/>
+                <path d="M529 490 V522"/>
+                <use href="#seat" x="516" y="548" width="26" height="30" transform="rotate(-90 529 563)"/>
+                <!-- 隔壁 -->
+                <path d="M452 604 H488 M512 604 H548"/>
+                <path class="dash" d="M488 604 A24 24 0 0 0 512 628"/>
+                <!-- ④ ベッドルーム -->
+                <rect x="468" y="632" width="64" height="74" rx="5"/>
+                <rect x="473" y="637" width="25" height="12" rx="4"/>
+                <rect x="502" y="637" width="25" height="12" rx="4"/>
+                <path d="M468 672 H532"/>
+                <rect x="535" y="636" width="9" height="20" rx="2"/>
+                <path d="M452 724 H488 M512 724 H548"/>
+                <!-- ⑤ 化粧室 -->
+                <rect x="456" y="734" width="26" height="36" rx="3"/>
+                <ellipse cx="469" cy="752" rx="7" ry="5"/>
+                <rect x="522" y="740" width="18" height="8" rx="2"/>
+                <ellipse cx="531" cy="760" rx="7" ry="9"/>
+                <path d="M452 796 H548"/>
+                <!-- ⑥ 手荷物室 -->
+                <rect x="456" y="804" width="88" height="54" rx="3" fill="url(#hatch)"/>
+                <!-- 通路 -->
+                <path class="dash dash--aisle" d="M500 170 V598 M500 630 V716"/>
+              </g>
+              <!-- 寸法線 -->
+              <g class="plan__dim">
+                <path d="M410 162 V858 M402 162 H418 M402 858 H418"/>
+                <text x="396" y="510" transform="rotate(-90 396 510)" text-anchor="middle">客室全長 14.2 m</text>
+                <path d="M448 140 H552 M448 132 V148 M552 132 V148"/>
+                <text x="500" y="128" text-anchor="middle">2.5 m</text>
+              </g>
+              <!-- 区画番号 -->
+              <g class="plan__nums">
+                <g transform="translate(500 290)"><circle r="9"/><text y="3.6">1</text></g>
+                <g transform="translate(500 402)"><circle r="9"/><text y="3.6">2</text></g>
+                <g transform="translate(500 530)"><circle r="9"/><text y="3.6">3</text></g>
+                <g transform="translate(500 688)"><circle r="9"/><text y="3.6">4</text></g>
+                <g transform="translate(500 764)"><circle r="9"/><text y="3.6">5</text></g>
+                <g transform="translate(500 831)"><circle r="9"/><text y="3.6">6</text></g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="scanline" id="scanline" aria-hidden="true"></div>
+
+      <!-- 仕様パネル -->
+      <div class="spec spec--l" id="specL">
+        <p class="spec__maker" data-spec>ARCHER</p>
+        <p class="spec__model" data-spec>ONE</p>
+        <dl class="spec__grid" data-spec>
+          <div><dt>最大航続距離</dt><dd>12,500<small>km</small></dd></div>
+          <div><dt>巡航速度</dt><dd>マッハ 0.90</dd></div>
+          <div><dt>座席数</dt><dd>最大13席</dd></div>
+          <div><dt>最長飛行時間</dt><dd>約14<small>時間</small></dd></div>
+          <div><dt>手荷物容量</dt><dd>5.6<small>m³</small></dd></div>
+          <div><dt>巡航高度</dt><dd>15,500<small>m</small></dd></div>
+        </dl>
+        <dl class="spec__cabin" data-spec>
+          <dt>客室サイズ</dt>
+          <dd><span>全長</span>14.2 m</dd>
+          <dd><span>幅</span>2.5 m</dd>
+          <dd><span>高さ</span>1.9 m</dd>
+        </dl>
+      </div>
+      <div class="spec spec--r" id="specR">
+        <p class="spec__kind" data-spec>超長距離ビジネスジェット</p>
+        <p class="spec__eyebrow" data-spec>直行で、遠くまで</p>
+        <p class="spec__text" data-spec>東京とニューヨークを、給油なしの直行便で。音速の約9割で巡航し、大陸をまたぐ移動も一晩の旅に変えます。</p>
+        <div class="spec__legend" data-spec>
+          <p class="spec__legend-title">客室のレイアウト</p>
+          <ol id="legend">
+            <li data-zone="290"><span>01</span>クラブシート（4席）</li>
+            <li data-zone="402"><span>02</span>ダイニング（4席）</li>
+            <li data-zone="530"><span>03</span>ラウンジソファ（3席）</li>
+            <li data-zone="688"><span>04</span>ベッドルーム</li>
+            <li data-zone="764"><span>05</span>化粧室</li>
+            <li data-zone="831"><span>06</span>手荷物室</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- スマートフォン向け：仕様の詳細（通常の流れで表示） -->
+  <section class="spec-m" aria-label="ARCHER ONE の仕様">
+    <p class="spec-m__model"><span>ARCHER</span> ONE</p>
+    <p class="spec-m__text">東京とニューヨークを、給油なしの直行便で。音速の約9割で巡航し、大陸をまたぐ移動も一晩の旅に変えます。</p>
+    <dl class="spec-m__grid">
+      <div><dt>最大航続距離</dt><dd>12,500 km</dd></div>
+      <div><dt>巡航速度</dt><dd>マッハ 0.90</dd></div>
+      <div><dt>座席数</dt><dd>最大13席</dd></div>
+      <div><dt>最長飛行時間</dt><dd>約14時間</dd></div>
+      <div><dt>手荷物容量</dt><dd>5.6 m³</dd></div>
+      <div><dt>巡航高度</dt><dd>15,500 m</dd></div>
+    </dl>
+    <p class="spec-m__legend-title">客室のレイアウト</p>
+    <ol class="spec-m__legend">
+      <li><span>01</span>クラブシート（4席）</li>
+      <li><span>02</span>ダイニング（4席）</li>
+      <li><span>03</span>ラウンジソファ（3席）</li>
+      <li><span>04</span>ベッドルーム</li>
+      <li><span>05</span>化粧室</li>
+      <li><span>06</span>手荷物室</li>
+    </ol>
+  </section>
+
+  <!-- ================= 4. サービス ================= -->
+  <section class="service" id="service" aria-labelledby="service-title">
+    <div class="service__inner">
+      <div class="service__list">
+        <p class="eyebrow" data-reveal>ARCHERのサービス</p>
+        <h2 class="service__title" id="service-title" data-reveal>より心地よい、<br>空の旅を。</h2>
+        <div class="acc" id="acc">
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="acc-1" id="acc-btn-1" data-index="0"><span>ペットとご一緒に</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+            <div class="acc__panel" id="acc-1" role="region" aria-labelledby="acc-btn-1"><p>大切な家族であるペットも、同じ客室でご一緒に。検疫や書類の準備から機内での過ごし方まで、専任のスタッフが事前に細かく確認します。飼い主さまもペットも、いつもどおりの落ち着いた時間をお過ごしいただけます。</p></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="acc-2" id="acc-btn-2" data-index="1"><span>24時間365日のご案内</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+            <div class="acc__panel" id="acc-2" role="region" aria-labelledby="acc-btn-2"><p>時差や時間帯を問わず、コンシェルジュが24時間お電話をお受けしています。急な出発のご依頼や予定の変更にも、その場でご案内します。</p></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="acc-3" id="acc-btn-3" data-index="2"><span>機内でのおもてなし</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+            <div class="acc__panel" id="acc-3" role="region" aria-labelledby="acc-btn-3"><p>お好みに合わせたお食事やお飲み物、映画や音楽、高速の機内通信まで。フライトごとに内容を整え、客室乗務員がきめ細かくお迎えします。</p></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="acc-4" id="acc-btn-4" data-index="3"><span>スムーズなご搭乗</span><i class="acc__icon" aria-hidden="true"></i></button></h3>
+            <div class="acc__panel" id="acc-4" role="region" aria-labelledby="acc-btn-4"><p>専用ラウンジから機体までは、わずか数分。混雑を避けた動線と手続きで、到着してから離陸までの時間を短くしています。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="service__media" aria-hidden="true">
+        <figure class="media" data-media="0"><div class="media__img"><img src="assets/service-pet.svg" alt="" width="800" height="1000"></div></figure>
+        <figure class="media" data-media="1"><div class="media__img"><canvas class="media__canvas" id="mediaWindow" width="800" height="1000"></canvas></div></figure>
+        <figure class="media" data-media="2"><div class="media__img"><img src="assets/service-dining.svg" alt="" width="800" height="1000"></div></figure>
+        <figure class="media" data-media="3"><div class="media__img"><img src="assets/service-boarding.svg" alt="" width="800" height="1000"></div></figure>
+      </div>
+    </div>
+    <div class="data">
+      <div class="data__item"><span class="data__label">対応する国と地域</span><span class="data__value">124</span></div>
+      <div class="data__item"><span class="data__label">拠点</span><span class="data__value data__value--jp">東京・羽田</span></div>
+      <div class="data__item"><span class="data__label">東京の現在時刻</span><span class="data__value" data-clock>--:--</span></div>
+    </div>
+  </section>
+
+  <!-- ================= 5. 就航地・お客様の声・フッター ================= -->
+  <section class="global" id="global" aria-labelledby="global-title">
+    <div class="global__stage">
+      <div class="global__words">
+        <h2 class="global__words-lead" id="global-title">どこへでも</h2>
+        <svg class="global__plane" viewBox="0 0 24 24" aria-hidden="true"><path transform="rotate(90 12 12)" d="M12 2.5c.8 0 1.3.9 1.3 2v5.2l7.2 4.1v1.9l-7.2-2.2v4.3l2 1.5v1.5L12 20l-3.3.8v-1.5l2-1.5v-4.3l-7.2 2.2v-1.9l7.2-4.1V4.5c0-1.1.5-2 1.3-2Z"/></svg>
+        <div class="words" aria-live="off">
+          <ul class="words__list" id="words">
+            <li>ロンドン</li><li>ニューヨーク</li><li>パリ</li><li>シンガポール</li><li>ドバイ</li><li>ホノルル</li><li>ミラノ</li><li>香港</li><li>シドニー</li><li>ロサンゼルス</li><li>ソウル</li><li>ジュネーヴ</li>
+          </ul>
+        </div>
+      </div>
+      <p class="global__giant" id="giant" aria-hidden="true">ARCHER</p>
+      <div class="globe" id="globeWrap"><canvas id="globe" aria-hidden="true"></canvas></div>
+
+      <div class="footer" id="footer">
+        <p class="footer__lead">どこへでも、<br>思いのままに。</p>
+        <div class="footer__contact">
+          <p class="footer__label">お問い合わせ（24時間受付）</p>
+          <a class="roll-link" href="mailto:concierge@archer.example"><span class="roll" data-text="concierge@archer.example">concierge@archer.example</span></a>
+          <a class="roll-link" href="tel:0300000000"><span class="roll" data-text="03-0000-0000">03-0000-0000</span></a>
+        </div>
+        <div class="footer__bottom">
+          <span>© 2026 ARCHER</span>
+          <a href="#" class="roll-link" onclick="return false"><span class="roll" data-text="プライバシーポリシー">プライバシーポリシー</span></a>
+          <span class="footer__note">本サイトは架空のブランドによるデザインサンプルです</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards" id="cards">
+      <article class="card card--stat" data-card>
+        <div class="card__top">
+          <p class="card__num">4,800<span>+</span></p>
+          <span class="card__code" aria-hidden="true"></span>
+        </div>
+        <p class="card__label">これまでに手配したフライト</p>
+        <svg class="monogram monogram--dark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path d="M32 13 L45 42 L32 34.5 L19 42 Z"/><path d="M32 34.5 V52"/></svg>
+        <p class="card__text">積み重ねてきた経験と、確かな運航。急なチャーターから大陸間の移動まで、安全とプライバシーを守りながら、一便ずつお届けしています。</p>
+      </article>
+
+      <div class="voices-head" data-card>
+        <h3>お客様の声</h3>
+        <p>ご利用いただいた方々から</p>
+      </div>
+
+      <article class="card card--voice" data-card>
+        <div class="card__route"><span>HND</span><i aria-hidden="true"></i><span>SIN</span></div>
+        <blockquote><p>深夜に羽田を発ち、翌朝にはシンガポールの会議に出席できました。機内でしっかり眠れたので、到着後もすぐに仕事に取りかかれました。</p></blockquote>
+        <p class="card__who">会社経営・50代</p>
+        <span class="card__code" aria-hidden="true"></span>
+      </article>
+      <article class="card card--voice" data-card>
+        <div class="card__route"><span>KIX</span><i aria-hidden="true"></i><span>HNL</span></div>
+        <blockquote><p>愛犬と一緒に移動できる方法を探していました。書類の準備から機内での過ごし方まで細かく相談に乗っていただき、安心して旅ができました。</p></blockquote>
+        <p class="card__who">医師・40代</p>
+        <span class="card__code" aria-hidden="true"></span>
+      </article>
+      <article class="card card--voice" data-card>
+        <div class="card__route"><span>NRT</span><i aria-hidden="true"></i><span>LHR</span></div>
+        <blockquote><p>急な予定変更にも、夜中の電話ひとつで対応していただきました。移動の負担が減ったことで、仕事の組み立て方そのものが変わりました。</p></blockquote>
+        <p class="card__who">映像プロデューサー・40代</p>
+        <span class="card__code" aria-hidden="true"></span>
+      </article>
+    </div>
+  </section>
+</main>
+
+<!-- ================= 予約フォーム（ボトムシート） ================= -->
+<div class="booking" id="booking" hidden>
+  <div class="booking__overlay" data-close-booking></div>
+  <div class="booking__panel" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <div class="booking__main" id="bookingMain">
+      <h2 class="booking__title" id="booking-title">フライトのご相談</h2>
+      <form class="booking__form" id="bookingForm" novalidate>
+        <label class="field"><span>お名前</span><input type="text" name="name" autocomplete="name" placeholder="山田 太郎" required></label>
+        <label class="field"><span>メールアドレス</span><input type="email" name="email" autocomplete="email" placeholder="name@example.com" required></label>
+        <label class="field"><span>電話番号</span><input type="tel" name="tel" autocomplete="tel" placeholder="090-0000-0000"></label>
+        <label class="field"><span>ご希望の区間</span><input type="text" name="route" placeholder="例：羽田 → シンガポール"></label>
+        <div class="booking__foot">
+          <label class="check"><input type="checkbox" name="agree" required><span>プライバシーポリシーに同意します</span></label>
+          <button class="booking__submit" type="submit"><span>送信する</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <p class="booking__error" id="bookingError" role="alert"></p>
+      </form>
+    </div>
+    <div class="booking__done" id="bookingDone" hidden>
+      <p class="booking__done-title">ありがとうございます。</p>
+      <p>担当のコンシェルジュより、24時間以内にご連絡いたします。<br><small>（デモサイトのため、実際には送信されません）</small></p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="js/sky.js?v=5"></script>
+<script src="js/cabin.js?v=5"></script>
+<script src="js/cabin-gl.js?v=5"></script>
+<script src="js/globe.js?v=5"></script>
+<script src="js/main.js?v=5"></script>
+</body>
+</html>
